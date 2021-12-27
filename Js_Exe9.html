@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 9 - Js</title>
+    <script>
+        function validar() {
+
+
+            alert("Salvo com sucesso!");
+            var nome = document.getElementById("nome").value;
+            var senha1 = document.getElementById("senha1").value;
+            var senha2 = document.getElementById("senha2").value;
+            if (nome != "" && senha1 != "" && senha2 != "") {
+                if (senha1 == senha2) {
+                    if (senha1.length > 5 && senha1.length <= 10) {
+                        alert("Salvo com sucesso!");
+                    }
+                    else {
+                        alert("Senha sem os requisitos!");
+                    }
+                }
+                else {
+                    alert("As senhas precisam ser iguais!!");
+                }
+            }
+            else {
+                alert("Preencha todos os campos!");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <!--     <form action="" name="Formulário" method="get">
+
+        <h3>CADASTRO</h3><br>
+
+        <label>Nome: </label><br>
+        <input type="text" name="nome" id="nome" maxlength="30" placeholder="Nome:" required> <br>
+
+        <input type="radio" name="sexo" id="homem" value="homem" required>Homem
+        <input type="radio" name="sexo" id="mulher" value="mulher" required>Mulher<br><br>
+
+        <label>Usuário: </label><br>
+        <input type="text" name="usuario" id="usuario" maxlength="10" placeholder="Usuário:" required> <br>
+        <input type="email" placeholder="E-mail:"><br><br>
+
+        <label>Senha: </label><br>
+        <input type="senha1" placeholder="Senha:" minlength="6" maxlength="10" required> <br>
+        <input type="senha2" placeholder="Corfirmar Senha:" minlength="6" maxlength="10" required> <br><br>
+
+
+
+        <button type="button" id="enviar" onclick="validar()">Enviar</button>
+
+
+
+
+
+
+    </form> -->
+
+
+    <form>
+        <label>Nome:</label>
+        <input id="nome" type="text">
+        <br /><br />
+        <label>Senha:</label>
+        <input id="senha1" type="password">
+        <br /><br />
+        <label>Confirmar a senha:</label>
+        <input id="senha2" type="password">
+        <br /><br />
+        <button onclick="validar();">Salvar</button>
+    </form>
+
+
+</body>
+
+</html>

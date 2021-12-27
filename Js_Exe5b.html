@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 5b - Js</title>
+
+
+    <script>
+        function verifica() {
+
+            var cbox = document.getElementsByName("check");
+            var cont = 0;
+
+            for (i = 0; i < cbox.length; i++) {
+
+                if (cbox[i].checked == true) {
+                    cont++;
+                }
+            }
+
+            if (cont >= 2) {
+                document.getElementById("aplica").removeAttribute("disabled");
+            }
+            else {
+                document.getElementById("aplica").setAttribute("enabled");
+            }
+        }
+
+
+
+
+        function checktodos(todos) {
+            var cbox = document.getElementsByName("check");
+
+
+            for (i = 0; i < cbox.length; i++) {
+                if (cbox[i].checked == todos.checked) {
+
+                }
+            }
+
+            verifica();
+
+
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+
+    <h2>Marque duas opções para o botão aparecer!</h2>
+
+    <input type="checkbox" name="check" onclick="checktodos(this);">TODOS 
+    <label>TODOS</label>
+
+    <input type="checkbox" name="check" onclick="verifica();">
+    <label>Valor 01</label>
+
+    <input type="checkbox" name="check" onclick="verifica();">
+    <label>Valor 02</label>
+
+    <input type="checkbox" name="check" onclick="verifica();">
+    <label>Valor 03</label>
+
+    <br>
+    <br>
+
+
+    <button type="button" id="aplica" disabled> Submeter </button>
+
+
+</body>
+
+</html>

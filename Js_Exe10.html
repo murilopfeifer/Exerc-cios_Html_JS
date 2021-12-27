@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+
+<head>
+    <script>
+
+        function cadastrar() {
+
+        }
+
+        function alteraVisibilidade(tipop) {
+            //alert(tipop);
+            if (tipop == "fisica") {
+                document.getElementById("pessoaFisica").style.display = "block";
+                document.getElementById("pessoaJuridica").style.display = "none";
+            }
+            else {
+                document.getElementById("pessoaFisica").style.display = "none";
+                document.getElementById("pessoaJuridica").style.display = "block";
+            }
+        }
+
+        function mascara(m, t, e) {
+            var cursor = t.selectionStart;
+            var texto = t.value;
+            texto = texto.replace(/\D/g, '');
+            var l = texto.length;
+            var lm = m.length;
+            if (window.event) {
+                id = e.keyCode;
+            } else if (e.which) {
+                id = e.which;
+            }
+            cursorfixo = false;
+            if (cursor < l) cursorfixo = true;
+            var livre = false;
+            if (id == 16 || id == 19 || (id >= 33 && id <= 40)) livre = true;
+            ii = 0;
+            mm = 0;
+            if (!livre) {
+                if (id != 8) {
+                    t.value = "";
+                    j = 0;
+                    for (i = 0; i < lm; i++) {
+                        if (m.substr(i, 1) == "#") {
+                            t.value += texto.substr(j, 1);
+                            j++;
+                        } else if (m.substr(i, 1) != "#") {
+                            t.value += m.substr(i, 1);
+                        }
+                        if (id != 8 && !cursorfixo) cursor++;
+                        if ((j) == l + 1) break;
+                    }
+                }
+            }
+            if (cursorfixo && !livre) cursor--;
+            t.setSelectionRange(cursor, cursor);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Exercício 10: JavaScript</h1>
+    <form>
+        <label>Nome:</label>
+        <input id="nome" type="text" required>
+        <br /><br />
+        <label>Tipo pessoa</label>
+        <input name="pessoa" onclick="alteraVisibilidade('fisica');" type="radio" checked>Física</input>
+        <input name="pessoa" onclick="alteraVisibilidade('juridica');" type="radio">Jurídica</input>
+
+        <div id="pessoaFisica">
+            <label>CPF</label>
+            <input id="cpf" onkeyup="mascara('###.###.###-##',this,event)" type="text">
+            <label>Data de Nascimento</label>
+            <input id="dt" type="date">
+        </div>
+
+        <div id="pessoaJuridica" style="display: none;">
+            <label>Registro PJ</label>
+            <input id="cnpj" onkeyup="mascara('##.###.###/####-##',this,event)" type="text">
+        </div>
+
+        <label>Endereço</label>
+        <input type="text" id="endereco">
+
+        <label>CEP</label>
+        <input type="number" onkeyup="mascara('#####-###',this,event)" id="cep">
+
+        <label>Fone</label>
+        <input type="text" onkeyup="mascara('(##)#####-####',this,event)" id="fone">
+
+        <label>Email</label>
+        <input type="email" id="email">
+
+        <button onclick="cadastrar();">Salvar</button>
+    </form>
+</body>
+
+</html>
